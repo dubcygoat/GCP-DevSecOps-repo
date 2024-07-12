@@ -3,6 +3,6 @@ steps:
     entrypoint: 'bash'
     args:
       - '-c'
-      - 'echo "Hello, Cloud Build!" this is our first build on google cloud platforms.'
+      - 'echo "Hello, Cloud Build!" this is our first build on google cloud platform.'
 options:
       logging: CLOUD_LOGGING_ONLY
