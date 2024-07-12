@@ -1,0 +1,6 @@
+steps:
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - 'echo "Hello, Cloud Build!" this is our first build.'
