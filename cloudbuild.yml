@@ -4,3 +4,5 @@ steps:
     args:
       - '-c'
       - 'echo "Hello, Cloud Build!" this is our first build on google cloud platforms.'
+options:
+      logging: CLOUD_LOGGING_ONLY
