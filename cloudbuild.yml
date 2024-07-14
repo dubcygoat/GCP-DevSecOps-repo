@@ -1,6 +1,6 @@
 steps:
   - name: gcr.io/cloud-builders/mvn
     entrypoint: 'mvn'
-    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Donar.organization=dubcygoat', '-Dsonar.projectKey=GCP-GIT', '-Dsonar.token=9d89af6454490305ba9a5686fe61a57cfb405388']
+    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Donar.organization=dubcygoat', '-Dsonar.projectKey=gcp-git', '-Dsonar.token=9d89af6454490305ba9a5686fe61a57cfb405388']
 options:
        logging: CLOUD_LOGGING_ONLY
