@@ -12,7 +12,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.release>8</maven.compiler.release>
         <sonar.organization>dubcygoat</sonar.organization> 
-        <sonar.projectKey>gcp-git</sonar.projectKey>
+        <sonar.projectKey>dubcygoat_gcp-git</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url> 
         <sonar.token>9d89af6454490305ba9a5686fe61a57cfb405388</sonar.token>
     </properties>
