@@ -1,6 +1,6 @@
 steps:
   - name: 'maven:3-jdk-11'
     entrypoint: 'mvn'
-    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io/','-Donar.organization=dubcygoat', '-Dsonar.projectKey=gcp-git', '-Dsonar.login=9d89af6454490305ba9a5686fe61a57cfb405388']
+    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Donar.organization=dubcygoat', '-Dsonar.projectKey=gcp-git', '-Dsonar.login=9d89af6454490305ba9a5686fe61a57cfb405388']
 options:
        logging: CLOUD_LOGGING_ONLY
