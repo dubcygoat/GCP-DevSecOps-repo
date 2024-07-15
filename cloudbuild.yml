@@ -2,5 +2,16 @@ steps:
   - name: gcr.io/cloud-builders/mvn
     entrypoint: 'mvn'
     args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Donar.organization=dubcygoat', '-Dsonar.projectKey=dubcygoat_gcp-git', '-Dsonar.token=${_SONAR_TOKEN}']
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        apt-get update
+        apt-get -y install maven
+        SNYK_TOKEN=${_SNYK_TOKEN}
+        export SNYK_TOKEN
+        mvn snyk:test -fn
+    id: 'Snyk SCA'
 options:
        logging: CLOUD_LOGGING_ONLY

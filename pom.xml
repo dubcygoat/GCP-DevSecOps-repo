@@ -10,9 +10,9 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-         <sonar.organization>dubcygoat</sonar.organization> <!-- Add this line -->
-        <sonar.projectKey>dubcygoat_gcp-git</sonar.projectKey> <!-- Add this line -->
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url> <!-- Add this line if using SonarCloud -->
+         <sonar.organization>dubcygoat</sonar.organization> 
+        <sonar.projectKey>dubcygoat_gcp-git</sonar.projectKey> 
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url> 
         <sonar.token>${_SONAR_TOKEN}</sonar.token>
     </properties>
     <dependencies>
@@ -26,52 +26,66 @@
             <artifactId>nd4j-common</artifactId>
             <version>1.0.0-beta2</version>
         </dependency>
-
-<!--#Change 1 - Changes for Unit Test Coverage Percentage Update on SonarCloud Dashboard
-#By ASecurityGuru
-#5/11/2022 11:14 AM IST
-#Default Location of CodeCoverage File is target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
--->
-        <dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.12</version>
-				<scope>test</scope>
-		</dependency>
     </dependencies>
 
-<!--#Change 2 - Changes for Unit Test Coverage Percentage Update on SonarCloud Dashboard
-#By ASecurityGuru
-#5/11/2022 11:14 AM IST
-#Default Location of CodeCoverage File is target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
--->
+                <!--#Change 1 - Changes for Unit Test Coverage Percentage Update on SonarCloud Dashboard
+                #By ASecurityGuru
+                #5/11/2022 11:14 AM IST
+                #Default Location of CodeCoverage File is target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+                -->
+                    <!--  <dependency>
+                                <groupId>junit</groupId>
+                                <artifactId>junit</artifactId>
+                                <version>4.12</version>
+                                <scope>test</scope>
+                        </dependency>
+                    </dependencies> -->
 
-	<build>
-	<plugins>
-    <plugin>
-      <groupId>org.jacoco</groupId>
-     <artifactId>jacoco-maven-plugin</artifactId>
-      <version>0.8.7</version>
-      <executions>
-        <execution>
-          <id>prepare-agent</id>
-          <goals>
-            <goal>prepare-agent</goal>
-          </goals>
-        </execution>
-        <execution>
-          <id>report</id>
-          <goals>
-            <goal>report</goal>
-          </goals>
-          <configuration>
-            <formats>
-              <format>XML</format>
-            </formats>
-          </configuration>
-        </execution>
-      </executions>
-    </plugin>
-   </plugins>
-   </build>
+                <!--#Change 2 - Changes for Unit Test Coverage Percentage Update on SonarCloud Dashboard
+                #By ASecurityGuru
+                #5/11/2022 11:14 AM IST
+                #Default Location of CodeCoverage File is target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+                -->
+
+            <!-- 	<build>
+                <plugins>
+                <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
+                <executions>
+                    <execution>
+                    <id>prepare-agent</id>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                    </execution>
+                    <execution>
+                    <id>report</id>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                    <configuration>
+                        <formats>
+                        <format>XML</format>
+                        </formats>
+                    </configuration>
+                    </execution>
+                </executions>
+                </plugin>
+            </plugins>
+            </build> -->
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>io.snyk</groupId>
+            <artifactId>snyk-maven-plugin</artifactId>
+            <version>2.0.0</version>
+            <inherited>false</inherited>
+            <configuration>
+                <org>dubcygoat</org>
+            </configuration>
+        </plugin>
+    </plugins>
+    </build>
 </project>
