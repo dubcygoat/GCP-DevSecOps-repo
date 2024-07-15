@@ -10,6 +10,10 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+         <sonar.organization>dubcygoat</sonar.organization> <!-- Add this line -->
+        <sonar.projectKey>dubcygoat_gcp-git</sonar.projectKey> <!-- Add this line -->
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url> <!-- Add this line if using SonarCloud -->
+        <sonar.token>${_SONAR_TOKEN}</sonar.token>
     </properties>
     <dependencies>
         <dependency>
