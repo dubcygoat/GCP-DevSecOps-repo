@@ -1,7 +1,7 @@
 steps:
-  - name: gcr.io/cloud-builders/mvn
-    entrypoint: 'mvn'
-    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Donar.organization=dubcygoat', '-Dsonar.projectKey=dubcygoat_gcp-git', '-Dsonar.token=${_SONAR_TOKEN}']
+      # - name: gcr.io/cloud-builders/mvn
+      #   entrypoint: 'mvn'
+      #   args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Donar.organization=dubcygoat', '-Dsonar.projectKey=dubcygoat_gcp-git', '-Dsonar.token=${_SONAR_TOKEN}']
   - name: 'ubuntu'
     entrypoint: 'bash'
     args:
@@ -12,6 +12,6 @@ steps:
         SNYK_TOKEN=${_SNYK_TOKEN}
         export SNYK_TOKEN
         mvn snyk:test -fn
-    id: 'Snyk SCA'
+id: 'Snyk SCA'
 options:
-       logging: CLOUD_LOGGING_ONLY
+    logging: CLOUD_LOGGING_ONLY
