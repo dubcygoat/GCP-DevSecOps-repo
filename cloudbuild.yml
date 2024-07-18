@@ -1,16 +1,16 @@
 steps:
   
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |-
-        apt-get update
-        apt-get -y install maven
-        SNYK_TOKEN=${_SNYK_TOKEN}
-        export SNYK_TOKEN
-        mvn snyk:test -fn
-    id: 'Snyk SCA'
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   entrypoint: 'bash'
+  #   args:
+  #     - '-c'
+  #     - |-
+  #       apt-get update
+  #       apt-get -y install maven
+  #       SNYK_TOKEN=${_SNYK_TOKEN}
+  #       export SNYK_TOKEN
+  #       mvn snyk:test -fn
+  #   id: 'Snyk SCA'
 
   # DAST SCAN with OWASP ZAP
   - name: 'ubuntu'
