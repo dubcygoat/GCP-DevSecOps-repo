@@ -1,7 +1,5 @@
 steps:
-      # - name: gcr.io/cloud-builders/mvn
-      #   entrypoint: 'mvn'
-      #   args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Donar.organization=dubcygoat', '-Dsonar.projectKey=dubcygoat_gcp-git', '-Dsonar.token=${_SONAR_TOKEN}']
+  
   - name: 'ubuntu'
     entrypoint: 'bash'
     args:
@@ -12,6 +10,29 @@ steps:
         SNYK_TOKEN=${_SNYK_TOKEN}
         export SNYK_TOKEN
         mvn snyk:test -fn
-id: 'Snyk SCA'
+    id: 'Snyk SCA'
+
+  # DAST SCAN with OWASP ZAP
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        apt-get update
+        apt-get -y install wget
+        apt-get -y install default-jdk
+        wget https://github.com/zaproxy/zaproxy/releases/download/v2.11.1/ZAP_2.11.1_Linux.tar.gz
+        mkdir zap
+        tar -xvf ZAP_2.11.1_Linux.tar.gz -C zap --strip-components=1
+        cd zap
+        ./zap.sh -cmd -quickurl https://www.example.com -quickprogress -quickout ../zap_report.html
+    id: 'DAST Scan using OWASP ZAP in GCP DevSecOps Pipeline'
+
+artifacts:
+      objects:
+       location: 'gs://gcp_devsecops'
+       paths: ['zap_report.html']
 options:
     logging: CLOUD_LOGGING_ONLY
+
+
