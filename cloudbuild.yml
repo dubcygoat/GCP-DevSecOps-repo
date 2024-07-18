@@ -1,6 +1,6 @@
 steps:
   
-  - name: 'ubuntu'
+  - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
       - '-c'
