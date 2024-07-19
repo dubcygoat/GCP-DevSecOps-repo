@@ -22,11 +22,12 @@ steps:
 
 
 # Run DAST scan using OWASP ZAP in GCP DevSecOps Pipeline
-- name: gcr.io/cloud-builders/ubuntu
+- name: ubuntu
   entrypoint: bash
   args: 
     - '-c'
     - |-
+      set -e
       apt-get update
       apt-get -y install wget
       apt-get -y install default-jdk
@@ -38,10 +39,10 @@ steps:
   id: DAST Scan using OWASP ZAP in GCP DevSecOps Pipeline
 
 
-# artifacts:
-#   objects:
-#     location: 'gs://gcp_devsecops'
-#     paths: ['zap_report.html']
+artifacts:
+  objects:
+    location: 'gs://gcp_devsecops'
+    paths: ['zap_report.html']
 
 options:
   logging: CLOUD_LOGGING_ONLY
