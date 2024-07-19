@@ -1,48 +1,48 @@
 steps:
         
-    # Execute SAST Scan using SonarCloud in GCP DevSecOps Pipeline
-    - name: gcr.io/cloud-builders/mvn
-      entrypoint: mvn
-      args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=dubcygoat','-Dsonar.projectKey=dubcygoat_gcp-git','-Dsonar.token=${_SONAR_TOKEN}']
-      id: SAST Scan using SonarCloud in GCP DevSecOps Pipeline
+# Execute SAST Scan using SonarCloud in GCP DevSecOps Pipeline
+- name: gcr.io/cloud-builders/mvn
+  entrypoint: mvn
+  args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=dubcygoat','-Dsonar.projectKey=dubcygoat_gcp-git','-Dsonar.token=${_SONAR_TOKEN}']
+  id: SAST Scan using SonarCloud in GCP DevSecOps Pipeline
 
 
-  # Run Software Composition Analysis (SCA security scan) using Snyk in GCP DevSecOps Pipeline
-    - name: 'ubuntu'
-      entrypoint: bash
-      args: 
-          - '-c'
-          - |-
-            apt-get update
-            apt-get -y install maven 
-            SNYK_TOKEN=${_SNYK_TOKEN}
-            export SNYK_TOKEN
-            mvn snyk:test -fn 
-      id: SCA Scan using Snyk in GCP DevSecOps Pipeline
+# Run Software Composition Analysis (SCA security scan) using Snyk in GCP DevSecOps Pipeline
+- name: 'ubuntu'
+  entrypoint: bash
+  args: 
+      - '-c'
+      - |-
+        apt-get update
+        apt-get -y install maven 
+        SNYK_TOKEN=${_SNYK_TOKEN}
+        export SNYK_TOKEN
+        mvn snyk:test -fn 
+  id: SCA Scan using Snyk in GCP DevSecOps Pipeline
 
 
-  # Run DAST scan using OWASP ZAP in GCP DevSecOps Pipeline
-    - name: 'ubuntu'
-      entrypoint: bash
-      args: 
-        - '-c'
-        - |-
-          apt-get update
-          apt-get -y install wget
-          apt-get -y install default-jdk
-          wget https://github.com/zaproxy/zaproxy/releases/download/v2.11.1/ZAP_2.11.1_Linux.tar.gz
-          mkdir zap
-          tar -xvf ZAP_2.11.1_Linux.tar.gz
-          cd ZAP_2.11.1
-          ./zap.sh -cmd -quickurl https://www.example.com -quickprogress -quickout ../zap_report.html 
-      id: DAST Scan using OWASP ZAP in GCP DevSecOps Pipeline
+# Run DAST scan using OWASP ZAP in GCP DevSecOps Pipeline
+- name: 'ubuntu'
+  entrypoint: bash
+  args: 
+    - '-c'
+    - |-
+      apt-get update
+      apt-get -y install wget
+      apt-get -y install default-jdk
+      wget https://github.com/zaproxy/zaproxy/releases/download/v2.11.1/ZAP_2.11.1_Linux.tar.gz
+      mkdir zap
+      tar -xvf ZAP_2.11.1_Linux.tar.gz
+      cd ZAP_2.11.1
+      ./zap.sh -cmd -quickurl https://www.example.com -quickprogress -quickout ../zap_report.html 
+  id: DAST Scan using OWASP ZAP in GCP DevSecOps Pipeline
 
 
 artifacts:
-      objects:
-       location: 'gs://gcp_devsecops'
-       paths: ['zap_report.html']
+  objects:
+    location: 'gs://gcp_devsecops'
+    paths: ['zap_report.html']
+    
 options:
-    logging: CLOUD_LOGGING_ONLY
-
+  logging: CLOUD_LOGGING_ONLY
 
