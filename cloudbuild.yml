@@ -8,7 +8,7 @@ steps:
 
 
 # Run Software Composition Analysis (SCA security scan) using Snyk in GCP DevSecOps Pipeline
-- name: 'ubuntu'
+- name: ubuntu
   entrypoint: bash
   args: 
       - '-c'
@@ -22,7 +22,7 @@ steps:
 
 
 # Run DAST scan using OWASP ZAP in GCP DevSecOps Pipeline
-- name: 'ubuntu'
+- name: ubuntu
   entrypoint: bash
   args: 
     - '-c'
