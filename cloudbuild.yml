@@ -1,10 +1,10 @@
 steps:
         
 # Execute SAST Scan using SonarCloud in GCP DevSecOps Pipeline
-- name: gcr.io/cloud-builders/mvn
-  entrypoint: mvn
-  args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=dubcygoat','-Dsonar.projectKey=dubcygoat_gcp-git','-Dsonar.token=${_SONAR_TOKEN}']
-  id: SAST Scan using SonarCloud in GCP DevSecOps Pipeline
+# - name: gcr.io/cloud-builders/mvn
+#   entrypoint: mvn
+#   args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=dubcygoat','-Dsonar.projectKey=dubcygoat_gcp-git','-Dsonar.token=${_SONAR_TOKEN}']
+#   id: SAST Scan using SonarCloud in GCP DevSecOps Pipeline
 
 
 # Run Software Composition Analysis (SCA security scan) using Snyk in GCP DevSecOps Pipeline
@@ -42,7 +42,7 @@ artifacts:
   objects:
     location: 'gs://gcp_devsecops'
     paths: ['zap_report.html']
-    
+
 options:
   logging: CLOUD_LOGGING_ONLY
 
