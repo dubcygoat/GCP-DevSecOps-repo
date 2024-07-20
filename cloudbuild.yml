@@ -65,7 +65,7 @@ steps:
 artifacts:
   objects:
     location: 'gs://gcp_devsecops'
-    paths: ['zap/zap_report.html']
+    paths: [zap_report.html]
 
 options:
   logging: CLOUD_LOGGING_ONLY
